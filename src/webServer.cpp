@@ -58,11 +58,11 @@ void webServer::bindAll()
     //get WiFi details
     server.on(PSTR("/api/wifi/get"), HTTP_GET, [](AsyncWebServerRequest *request) {
         String JSON;
-        StaticJsonDocument<200> jsonBuffer;
+        JsonDocument doc;
 
-        jsonBuffer["captivePortal"] = WiFiManager.isCaptivePortal();
-        jsonBuffer["ssid"] = WiFiManager.SSID();
-        serializeJson(jsonBuffer, JSON);
+        doc["captivePortal"] = WiFiManager.isCaptivePortal();
+        doc["ssid"] = WiFiManager.SSID();
+        serializeJson(doc, JSON);
 
         request->send(200, PSTR("text/html"), JSON);
     });
@@ -70,8 +70,8 @@ void webServer::bindAll()
     //get file listing
     server.on(PSTR("/api/files/get"), HTTP_GET, [](AsyncWebServerRequest *request) {
         String JSON;
-        StaticJsonDocument<1000> jsonBuffer;
-        JsonArray files = jsonBuffer.createNestedArray("files");
+        JsonDocument doc;
+        JsonArray files = doc["files"].to<JsonArray>();
 
         //get file listing
         Dir dir = LittleFS.openDir("");
@@ -81,10 +81,10 @@ void webServer::bindAll()
         //get used and total data
         FSInfo fs_info;
         LittleFS.info(fs_info);
-        jsonBuffer["used"] = String(fs_info.usedBytes);
-        jsonBuffer["max"] = String(fs_info.totalBytes);
+        doc["used"] = String(fs_info.usedBytes);
+        doc["max"] = String(fs_info.totalBytes);
 
-        serializeJson(jsonBuffer, JSON);
+        serializeJson(doc, JSON);
 
         request->send(200, PSTR("text/html"), JSON);
     });
@@ -104,10 +104,10 @@ void webServer::bindAll()
     //update status
     server.on(PSTR("/api/update-status"), HTTP_GET, [](AsyncWebServerRequest *request) {
         String JSON;
-        StaticJsonDocument<200> jsonBuffer;
+        JsonDocument doc;
 
-        jsonBuffer["status"] = updater.getStatus();
-        serializeJson(jsonBuffer, JSON);
+        doc["status"] = updater.getStatus();
+        serializeJson(doc, JSON);
 
         request->send(200, PSTR("text/html"), JSON);
     });
@@ -190,10 +190,10 @@ void webServer::handleFileUpload(AsyncWebServerRequest *request, String filename
     if (final)
     {
         String JSON;
-        StaticJsonDocument<100> jsonBuffer;
+        JsonDocument doc;
 
-        jsonBuffer["success"] = fsUploadFile.isFile();
-        serializeJson(jsonBuffer, JSON);
+        doc["success"] = fsUploadFile.isFile();
+        serializeJson(doc, JSON);
 
         request->send(200, PSTR("text/html"), JSON);
         fsUploadFile.close();        
