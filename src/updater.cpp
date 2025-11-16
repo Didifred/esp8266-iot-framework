@@ -4,7 +4,7 @@
 
 void LittleFSUpdater::requestStart(String filenameIn)
 {
-    status = 254;
+    status = FSUpdaterStatus::FLASHING;
     filename = filenameIn;
     requestFlag = true;
 }
@@ -20,18 +20,22 @@ void LittleFSUpdater::loop()
 
 uint8_t LittleFSUpdater::getStatus()
 {
+    return (uint8_t)status;
+}
+
+FSUpdaterStatus LittleFSUpdater::getStatusEnum()
+{
     return status;
 }
 
 void LittleFSUpdater::flash(String filename)
 {    
-    bool answer = 0;
+    bool success = false;
     File file = LittleFS.open(filename, "r");
 
     if (!file)
     {
         Serial.println(PSTR("Failed to open file for reading"));
-        answer = 0;
     }
     else
     {
@@ -50,7 +54,7 @@ void LittleFSUpdater::flash(String filename)
             if (Update.end())
             {
                 Serial.println(PSTR("Successful update"));
-                answer = 1;
+                success = true;
             }
             else
             {
@@ -62,7 +66,7 @@ void LittleFSUpdater::flash(String filename)
         file.close();
     }
     
-    status = answer;
+    status = success ? FSUpdaterStatus::SUCCESS : FSUpdaterStatus::ERROR;
 }
 
 LittleFSUpdater updater;

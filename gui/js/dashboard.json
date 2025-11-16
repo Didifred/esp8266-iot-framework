@@ -1,3 +1,10 @@
 [
+     {
+        "name": "gridPower",
+        "type": "float",
+        "direction": "display",
+        "display": "graph",
+        "xaxis": 60
+    }
     
 ]
