@@ -24,6 +24,7 @@ public:
     internalData internal;
     bool begin(int numBytes = 512);
     void saveRaw(uint8_t bytes[]);
+    void refresh(uint8_t bytes[]);
     void saveExternal(configData *extData);
     void save();
     void reset();

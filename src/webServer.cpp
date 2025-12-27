@@ -144,6 +144,31 @@ void webServer::bindAll()
 
         });
 
+    server.on(
+        PSTR("/api/config/refresh"), HTTP_POST,
+        [this](AsyncWebServerRequest *request) {},
+        [](AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final) {},
+        [this](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total) {
+            
+            static uint8_t buffer[sizeof(configManager.data)];
+            static uint32_t bufferIndex = 0;
+
+            for (size_t i = 0; i < len; i++)
+            {
+                buffer[bufferIndex] = data[i];
+                bufferIndex++;
+            }
+
+            if (index + len == total)
+            {
+                bufferIndex = 0;
+                configManager.refresh(buffer);
+                request->send(200, PSTR("text/html"), "");
+            }
+
+        });
+
+
     //receive binary configuration data from body
     server.on(
         PSTR("/api/dash/set"), HTTP_POST,

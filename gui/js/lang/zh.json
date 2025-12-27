@@ -10,6 +10,7 @@
     "globalOk": "OK",
     "globalStatus": "状态",
     "globalBack": "返回",
+    "globalRefresh" : "刷新",
     "wifiIP": "IP地址",
     "wifiSub": "子网",
     "wifiGW": "路由",

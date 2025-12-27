@@ -4,7 +4,8 @@
         "label": "Project Name",
         "type": "char",
         "length": 32,
-        "value": "ESP8266 IoT Framework"
+        "value": "Smart Solar Router",
+        "hidden": true
     },
     {
         "name": "language",        
@@ -12,5 +13,32 @@
         "length": 3,
         "value": "en",
         "hidden": true
+    },
+     {
+        "name": "Kp",
+        "label": "Proportional Gain (Kp)",
+        "type": "float",
+        "min": 0.0,
+        "max": 1.0,
+        "digits" : 3,
+        "value": 0.25
+    },
+    {
+        "name": "Ki",
+        "label": "Integral Gain (Ki)",
+        "type": "float",
+        "min": 0.0,
+        "max": 5.0,
+        "digits" : 3,
+        "value": 0.90
+    },
+    {
+        "name": "Kd",
+        "label": "Derivative Gain (Kd)",
+        "type": "float",
+        "min": 0.0,
+        "max": 1.0,
+        "digits" : 3,
+        "value": 0.00
     }
 ]

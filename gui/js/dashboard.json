@@ -1,10 +1,28 @@
 [
-     {
+    {
         "name": "gridPower",
         "type": "float",
         "direction": "display",
         "display": "graph",
         "xaxis": 60
+    },
+    {
+        "name": "powerRouted",
+        "type": "float",
+        "direction": "display",
+        "display": "graph",
+        "xaxis": 60
+    },
+    {
+        "name": "solarPowerSimul",
+        "type": "float",
+        "direction": "control"
+    },
+    {
+        "name": "teleplotEnabled",
+        "type": "bool",
+        "direction": "control"
     }
+
     
 ]

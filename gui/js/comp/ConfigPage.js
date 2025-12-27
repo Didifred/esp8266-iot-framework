@@ -22,9 +22,10 @@ export function ConfigPage(props) {
    
     const confItems = <DashboardItems items={Config} data={props.configData} />;    
 
-    let button;
+    let buttonSave;
+    let buttonRefresh;
     if (Object.keys(props.configData).length > 0) {
-        button = <Button onClick={() =>
+        buttonSave = <Button onClick={() =>
             fetch(`${props.API}/api/config/set`, {
                 method: "post",
                 body: form2bin(),                
@@ -33,12 +34,25 @@ export function ConfigPage(props) {
                     if (status == 200) {props.requestUpdate();}
                 })         
         }>{loc.globalSave}</Button>;
+
+        buttonRefresh = <Button onClick={() =>
+            fetch(`${props.API}/api/config/refresh`, {
+                method: "post",
+                body: form2bin(),                
+            }).then((response) => { return response.status; })
+                .then((status) => {
+                    if (status == 200) {props.requestUpdate();}
+                })         
+        }>{loc.globalRef}</Button>;
     }
 
     const form = <><Form>
         {confItems}
     </Form>
-    {button}        
+    <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+        {buttonSave}
+        {buttonRefresh}
+    </div>        
     </>;
 
     return <><h2>{loc.titleConf}</h2><p>{form}</p></>;

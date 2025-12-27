@@ -10,6 +10,7 @@
     "globalOk": "OK",
     "globalStatus": "Status",
     "globalBack": "Back",
+    "globalRefresh" : "Refresh",
     "wifiIP": "IP Address",
     "wifiSub": "Subnet",
     "wifiGW": "Gateway",

@@ -52,6 +52,11 @@ void config::saveRaw(uint8_t bytes[])
     requestSave = true;
 }
 
+void config::refresh(uint8_t bytes[])
+{
+    memcpy(&data,bytes,sizeof(data));
+}
+
 void config::saveExternal(configData *extData)
 {
     memcpy(&data, extData, sizeof(data));

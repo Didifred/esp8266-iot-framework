@@ -10,6 +10,7 @@
     "globalOk": "OK",
     "globalStatus": "Estado",
     "globalBack": "Voltar",
+    "globalRefresh" : "Atualizar",
     "wifiIP": "Endereço IP",
     "wifiSub": "Máscara de rede",
     "wifiGW": "Gateway",
