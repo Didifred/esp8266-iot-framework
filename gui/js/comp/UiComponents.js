@@ -9,8 +9,8 @@ export const cPrimaryHover = "#0066ee";
 export const cHeader = "#111111";
 export const cHeaderHover = "#333333";
 export const cTitle = "#888888"; 
-export const cSecondary = "#ff00cc";
-export const cSecondaryHover = "#cc0099"; 
+export const cSecondary = cPrimary;
+export const cSecondaryHover = cPrimaryHover; 
 
 import Config from "./../configuration.json";
 let loc;

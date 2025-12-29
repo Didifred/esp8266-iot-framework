@@ -46,12 +46,18 @@ if (Config.find(entry => entry.name === "language")) {
     loc = require("./../lang/en.json");
 }
 
-function DashboardStatus(status) {
-    return (status != 0 ? status == 1 ? <Live>{loc.dashLive}</Live> : <Disconnected>{loc.dashDisconn}</Disconnected> : <Connecting>{loc.dashConn}</Connecting>);
+DashboardStatus.propTypes = {    
+    socketStatus: PropTypes.number
+};
+
+function DashboardStatus(props) {
+    return (props.socketStatus != 0 ? (props.socketStatus == 1 ? <Live>{loc.dashLive}</Live> : <Disconnected>{loc.dashDisconn}</Disconnected>) : <Connecting>{loc.dashConn}</Connecting>);
 }
 
-DashboardStatus.propTypes = {    
-    status: PropTypes.number
+DashboardPage.propTypes = {    
+    requestData: PropTypes.func,
+    API: PropTypes.string,
+    socket: PropTypes.object,
 };
 
 export function DashboardPage(props) {
@@ -84,11 +90,7 @@ export function DashboardPage(props) {
     </Form>
     </>;
 
-    return <><PageTitle title={<>{loc.titleDash} <DashboardStatus status={socketStatus}/> </>} /><p>{form}</p></>;
+    return <><PageTitle title={<>{loc.titleDash} <DashboardStatus socketStatus={socketStatus}/> </>} /><p>{form}</p></>;
 }
 
-DashboardPage.propTypes = {    
-    requestData: PropTypes.func,
-    API: PropTypes.string,
-    socket: PropTypes.object,
-};
+
