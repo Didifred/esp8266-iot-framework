@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from "react";
+import { FiSettings } from "react-icons/fi";
+import { BiLineChart } from "react-icons/bi";
 
 import styled from "styled-components";
 
 import { ControlItem } from "./ControlItem";
 import { DisplayItem } from "./DisplayItem";
+import { Layout } from "./UiComponents";
 
 import Config from "./../configuration.json";
+
+
 let loc;
 if (Config.find(entry => entry.name === "language")) {
     loc = require("./../lang/" + Config.find(entry => entry.name === "language").value + ".json");
@@ -56,14 +61,6 @@ const Control = styled.p`
 
     button {        
         padding:0.4em 0.5em;
-    }
-`;
-
-const Layout = styled.div`
-    * {
-        width:calc(660px + 3em);
-        margin-left:0px;
-        max-width:calc(100% - 40px);
     }
 `;
 
@@ -145,7 +142,30 @@ export function DashboardItems(props) {
             }            
 
             if (props.items[i].type == "header") {
-                confItems = <>{confItems}<Layout><h3>{props.items[i].text}</h3></Layout></>;
+                let icon;
+
+                if (props.items[i].icon) {
+                    switch (props.items[i].icon.toLowerCase()) {
+                        case "settings":
+                            icon = <FiSettings/>;
+                            break;
+                        case "linechart":
+                            icon = <BiLineChart/>;
+                            break;
+                        default:
+                            icon = <FiSettings/>;
+                            break;
+                    }
+                } else {
+                    icon = "";
+                }
+                confItems = <>{confItems}
+                    <h3>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                            {icon}{props.items[i].text}
+                        </span>
+                    </h3>
+                </>;
                 continue;
             }            
 

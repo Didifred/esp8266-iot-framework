@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-import { Form, Button, Spinner, Confirmation } from "./UiComponents";
+import { Form, Button, Spinner, Confirmation, PageTitle } from "./UiComponents";
 import { FiWifi as Wifi, FiLock as Lock, FiServer as Server, FiCornerDownRight as CornerDownRight } from "react-icons/fi";
 
 import Config from "./../configuration.json";
@@ -76,10 +75,10 @@ export function WifiPage(props) {
     </Form>
     <Button onClick={() => setSaveModal(true)}>{loc.globalSave}</Button>
     </>;
-    
-    let page = <><h2>{loc.titleWifi}</h2> 
-        <h3>{loc.globalStatus}</h3></>;
-    
+
+    let page = <><PageTitle title={loc.titleWifi} />
+                 <h3>{loc.globalStatus}</h3></>;
+      
     let connectedTo;
     if (state.captivePortal === true) {
         connectedTo = loc.wifiCP;

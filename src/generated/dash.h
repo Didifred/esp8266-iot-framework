@@ -5,7 +5,8 @@ struct dashboardData
 {
 	float gridPower;
 	float powerRouted;
-	float solarPowerSimul;
+	uint16_t simuSolarPower;
+	bool simuHeaterEnabled;
 	bool teleplotEnabled;
 };
 

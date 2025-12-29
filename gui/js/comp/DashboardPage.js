@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Dash from "../dashboard.json";
 
-import { Form } from "./UiComponents";
+import { Form, PageTitle } from "./UiComponents";
 import { DashboardItems } from "./DashboardItems";
 
 import styled from "styled-components";
@@ -46,6 +46,14 @@ if (Config.find(entry => entry.name === "language")) {
     loc = require("./../lang/en.json");
 }
 
+function DashboardStatus(status) {
+    return (status != 0 ? status == 1 ? <Live>{loc.dashLive}</Live> : <Disconnected>{loc.dashDisconn}</Disconnected> : <Connecting>{loc.dashConn}</Connecting>);
+}
+
+DashboardStatus.propTypes = {    
+    status: PropTypes.number
+};
+
 export function DashboardPage(props) {
 
     const [counter, setCounter] = useState(0);
@@ -76,8 +84,7 @@ export function DashboardPage(props) {
     </Form>
     </>;
 
-    return <><h2>{loc.titleDash} {socketStatus != 0 ? socketStatus == 1 ? <Live>{loc.dashLive}</Live> : <Disconnected>{loc.dashDisconn}</Disconnected> : <Connecting>{loc.dashConn}</Connecting>}</h2><p>{form}</p></>;
-
+    return <><PageTitle title={<>{loc.titleDash} <DashboardStatus status={socketStatus}/> </>} /><p>{form}</p></>;
 }
 
 DashboardPage.propTypes = {    

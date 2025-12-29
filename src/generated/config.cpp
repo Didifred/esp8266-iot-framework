@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "config.h"
 
-uint32_t configVersion = 2489468524; //generated identifier to compare config with EEPROM
+uint32_t configVersion = 3897592989; //generated identifier to compare config with EEPROM
 
 const configData defaults PROGMEM =
 {

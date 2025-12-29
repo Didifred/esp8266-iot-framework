@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Config from "../configuration.json";
 import { obj2bin } from "../functions/configHelpers";
 
-import { Form, Button } from "./UiComponents";
+import { Form, Button, PageTitle } from "./UiComponents";
 import { DashboardItems } from "./DashboardItems";
 
 let loc;
@@ -43,7 +43,7 @@ export function ConfigPage(props) {
                 .then((status) => {
                     if (status == 200) {props.requestUpdate();}
                 })         
-        }>{loc.globalRef}</Button>;
+        }>{loc.globalRefresh}</Button>;
     }
 
     const form = <><Form>
@@ -55,7 +55,7 @@ export function ConfigPage(props) {
     </div>        
     </>;
 
-    return <><h2>{loc.titleConf}</h2><p>{form}</p></>;
+    return <><PageTitle title={loc.titleConf} /><p>{form}</p></>;
 
     function form2bin() {
         const newData = {};

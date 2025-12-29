@@ -14,9 +14,14 @@
         "value": "en",
         "hidden": true
     },
-     {
+    {
+        "type": "header",
+        "text": "Filter PID parameters",
+        "icon": "settings"
+    },
+    {
         "name": "Kp",
-        "label": "Proportional Gain (Kp)",
+        "label": "Kp",
         "type": "float",
         "min": 0.0,
         "max": 1.0,
@@ -25,7 +30,7 @@
     },
     {
         "name": "Ki",
-        "label": "Integral Gain (Ki)",
+        "label": "Ki",
         "type": "float",
         "min": 0.0,
         "max": 5.0,
@@ -34,11 +39,12 @@
     },
     {
         "name": "Kd",
-        "label": "Derivative Gain (Kd)",
+        "label": "Kd",
         "type": "float",
         "min": 0.0,
         "max": 1.0,
         "digits" : 3,
         "value": 0.00
     }
+    
 ]

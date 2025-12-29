@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { FileListing } from "./FileListing";
-import { Card, Flex, cSecondary, Button, DisabledButton, Confirmation, Alert, Spinner} from "./UiComponents";
+import { Card, Flex, cSecondary, Button, DisabledButton, Confirmation, Alert, Spinner, PageTitle } from "./UiComponents";
 import { FiZap as Zap, FiPower as Power } from "react-icons/fi";
 
 import Config from "./../configuration.json";
@@ -77,7 +77,7 @@ export function FirmwarePage(props) {
         buttons = <Button onClick={() => setState(1)}>{loc.globalBack}</Button>;
     } else {step = <FileListing API={props.API} selectable={true} onSelect={(name) => {setFilename(name);setState(2);}} filter="bin" />;}
     
-    return <><h2>{loc.titleFw}</h2>
+    return <><PageTitle title={loc.titleFw} />
     
         <Wizard>
             <h3 className={state == 1 ? "active" : ""}>1. {loc.fwSelect}</h3>

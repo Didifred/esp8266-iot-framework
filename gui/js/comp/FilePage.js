@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+import { PageTitle } from "./UiComponents";
 import PropTypes from "prop-types";
 
 import { FileListing } from "./FileListing";  
 
 import Config from "./../configuration.json";
+
 let loc;
+
 if (Config.find(entry => entry.name === "language")) {
     loc = require("./../lang/" + Config.find(entry => entry.name === "language").value + ".json");
 } else {
@@ -17,8 +20,7 @@ export function FilePage(props) {
         document.title = loc.titleFile;
     }, []);
 
-    return <><h2>{loc.titleFile}</h2><FileListing API={props.API} /></>;
-    
+    return <><PageTitle title={loc.titleFile} /><FileListing API={props.API} /></>;
 }
 
 FilePage.propTypes = {

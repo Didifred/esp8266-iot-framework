@@ -6,8 +6,9 @@ import PropTypes from "prop-types";
 
 export const cPrimary = "#0055ff"; 
 export const cPrimaryHover = "#0066ee"; 
-export const cHeader = "#111";
-export const cHeaderHover = "#333"; 
+export const cHeader = "#111111";
+export const cHeaderHover = "#333333";
+export const cTitle = "#888888"; 
 export const cSecondary = "#ff00cc";
 export const cSecondaryHover = "#cc0099"; 
 
@@ -89,7 +90,7 @@ export const Header = styled(HeaderSrc)`
         justify-content:space-between;    
         align-items: center;
         h1 {
-            color:#fff;
+            color: #fff;
         }
     }  
     
@@ -154,6 +155,14 @@ HamburgerSrc.propTypes = {
     onClick: PropTypes.func,
 };
 
+export const Layout = styled.div`
+    * {
+        width:calc(660px + 3em);
+        margin-left:0px;
+        max-width: 100%;
+    }
+`;
+
 export const Hamburger = styled(HamburgerSrc)`
 
     display:none;
@@ -197,7 +206,7 @@ export const Menu = styled.ul`
 
         a.active {
             background-color:#555;
-            color:#fff;
+            color: #fff;
         }
 
         &.menuHidden 
@@ -222,7 +231,7 @@ const modal = css`
         position:relative;
         max-width:calc(100vw - 100px);
         width:400px;
-        background-color:#fff;
+        background-color: #fff;
         padding:1em;
         top:20vh;
         margin:0px auto;
@@ -290,6 +299,17 @@ AlertSrc.propTypes = {
 export const Alert = styled(AlertSrc)`
     ${modal}
 `;
+
+export const PageTitle = ({title}) => (
+    <div>
+        <h2 style={{color: cTitle}}>{title}</h2>
+        <Layout><hr style={{ border: 'none', borderTop: '2px solid ' + cTitle, margin: '-0.5em 0 2em'}} /></Layout>
+    </div>
+)
+
+PageTitle.propTypes = {
+    title: PropTypes.any
+};
 
 export const Form = styled.form` 
     label {
@@ -437,6 +457,7 @@ export const Spinner = styled(Loader)`
         }
     }
 `;
+
 
 export function Fetch(props) {
     return <span onClick={(e) => {
