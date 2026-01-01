@@ -8,6 +8,7 @@ struct dashboardData
 	uint16_t simuSolarPower;
 	bool simuHeaterEnabled;
 	bool teleplotEnabled;
+	bool reboot;
 };
 
 #endif

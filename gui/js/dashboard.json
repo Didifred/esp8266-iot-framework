@@ -1,48 +1,52 @@
 [
-    {
-        "type": "header",
-        "text": "Monitoring",
-        "icon": "lineChart"
-    },
-    {
-        "name": "gridPower",
-        "label": "Grid power (W)",
-        "type": "float",
-        "direction": "display",
-        "display": "graph",
-        "xaxis": 60
-    },
-    {
-        "name": "powerRouted",
-        "label": "Power routed (W)",
-        "type": "float",
-        "direction": "display",
-        "display": "graph",
-        "xaxis": 60
-    },
-    {
-        "type": "separator"
-    },
-    {
-        "type": "header",
-        "text": "Debug",
-        "icon" : "settings"
-    },
-    {
-        "name": "simuSolarPower",
-        "type": "uint16_t",
-        "direction": "control"
-    },
-    {
-        "name" : "simuHeaterEnabled",
-        "type" : "bool",
-        "direction": "control"
-    },
-    {
-        "name": "teleplotEnabled",
-        "type": "bool",
-        "direction": "control"
-    }
-
-    
+  {
+    "type": "header",
+    "text": "Monitoring",
+    "icon": "lineChart"
+  },
+  {
+    "name": "gridPower",
+    "label": "Grid power (W)",
+    "type": "float",
+    "direction": "display",
+    "display": "graph",
+    "xaxis": 60
+  },
+  {
+    "name": "powerRouted",
+    "label": "Power routed (W)",
+    "type": "float",
+    "direction": "display",
+    "display": "graph",
+    "xaxis": 60
+  },
+  {
+    "type": "separator"
+  },
+  {
+    "type": "header",
+    "text": "Debug",
+    "icon": "settings"
+  },
+  {
+    "name": "simuSolarPower",
+    "type": "uint16_t",
+    "direction": "control"
+  },
+  {
+    "name": "simuHeaterEnabled",
+    "type": "bool",
+    "direction": "control"
+  },
+  {
+    "name": "teleplotEnabled",
+    "type": "bool",
+    "direction": "control"
+  },
+  {
+    "name": "reboot",
+    "type": "bool",
+    "control": "reboot",
+    "direction": "control"
+  }
 ]
